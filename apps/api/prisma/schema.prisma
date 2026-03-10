@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Track {
+  id            String          @id @default(cuid())
+  title         String
+  artist        String
+  album         String?
+  duration      Int?
+  filePath      String          @unique
+  coverPath     String?
+  sourceUrl     String?
+  youtubeId     String?
+  lyrics        String?
+  lyricsSource  String?
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  playlistItems PlaylistTrack[]
+}
+
+model Playlist {
+  id          String          @id @default(cuid())
+  name        String
+  description String?
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+  tracks      PlaylistTrack[]
+}
+
+model PlaylistTrack {
+  id         String   @id @default(cuid())
+  playlistId String
+  trackId    String
+  order      Int
+  addedAt    DateTime @default(now())
+  playlist   Playlist @relation(fields: [playlistId], references: [id], onDelete: Cascade)
+  track      Track    @relation(fields: [trackId], references: [id], onDelete: Cascade)
+
+  @@unique([playlistId, trackId])
+  @@unique([playlistId, order])
+}
+
+model ImportJob {
+  id           String   @id @default(cuid())
+  sourceUrl    String
+  status       String
+  message      String?
+  imported     Int      @default(0)
+  failed       Int      @default(0)
+  startedAt    DateTime @default(now())
+  completedAt  DateTime?
+}

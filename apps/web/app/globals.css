@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-canvas text-text antialiased;
+  background-image:
+    radial-gradient(circle at top left, rgba(30, 215, 96, 0.18), transparent 28%),
+    radial-gradient(circle at top right, rgba(21, 101, 52, 0.22), transparent 24%),
+    linear-gradient(180deg, #09100d 0%, #070b09 100%);
+  min-height: 100vh;
+}
+
+button,
+input {
+  outline: none;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+}

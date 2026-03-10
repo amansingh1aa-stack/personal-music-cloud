@@ -1,0 +1,19 @@
+{
+  "expo": {
+    "name": "Personal Music Cloud",
+    "slug": "personal-music-cloud",
+    "scheme": "musiccloud",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "android": {
+      "package": "com.personal.musiccloud"
+    },
+    "plugins": [
+      "expo-router"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}

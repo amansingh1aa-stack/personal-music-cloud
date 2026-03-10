@@ -1,0 +1,16 @@
+node_modules
+.next
+dist
+coverage
+.expo
+*.log
+.env
+apps/api/prisma/dev.db
+apps/api/prisma/dev.db-journal
+music/*
+!music/.gitkeep
+apps/api/storage/*
+!apps/api/storage/.gitkeep
+apps/mobile/.expo
+apps/mobile/android
+apps/mobile/ios

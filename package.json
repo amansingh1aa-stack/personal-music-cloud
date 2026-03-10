@@ -1,0 +1,23 @@
+{
+  "name": "personal-music-cloud",
+  "private": true,
+  "version": "0.2.0",
+  "workspaces": [
+    "apps/web",
+    "apps/api",
+    "apps/mobile",
+    "packages/shared"
+  ],
+  "scripts": {
+    "dev:web": "npm --workspace apps/web run dev",
+    "dev:api": "npm --workspace apps/api run dev",
+    "dev:mobile": "npm --workspace apps/mobile run dev",
+    "build": "npm run build --workspace packages/shared && npm run build --workspace apps/api && npm run build --workspace apps/web && npm run build --workspace apps/mobile",
+    "lint": "npm run lint --workspace packages/shared && npm run lint --workspace apps/web && npm run lint --workspace apps/api && npm run lint --workspace apps/mobile",
+    "prisma:generate": "npm --workspace apps/api run prisma:generate",
+    "prisma:migrate": "npm --workspace apps/api run prisma:migrate"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}
